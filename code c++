@@ -1,0 +1,165 @@
+#include<stdio.h>
+#include<string.h>
+#include<math.h>
+
+char result[10000];
+char columns[10000];
+char four[10000];
+char num[99999999];
+
+int main(){
+	
+	int size;
+	int count = 0;
+	
+	while(true) {
+		
+		scanf("%d %s",&size,num);
+		
+		if(size == 0){
+			break;
+		}
+
+		strcpy(result,"");
+		strcpy(columns,"");
+		strcpy(four,"");
+		
+		for(int i=0;i<size;i++){
+			strcat(columns,"-");
+			strcat(four," ");
+		}
+		
+		//upper
+		for(long i=0;i<strlen(num);i++){
+			if(num[i] == '1'){
+				strcat(result,"  ");
+				strcat(result,four);
+			}
+			else if(num[i] == '4'){
+				strcat(result,four);
+				strcat(result,"  ");
+			}
+			else{
+				strcat(result," ");
+				strcat(result,columns);
+				strcat(result," ");
+			}
+			
+			if(i < strlen(num)-1){
+				strcat(result," ");
+			}
+			
+		}
+		
+		
+		strcat(result,"\n");
+		
+		for(int x=0;x<size;x++){
+			for(long i=0;i<strlen(num);i++){
+				
+				if(num[i] == '1'){
+					strcat(result,four);	
+					strcat(result," |");
+				}
+				else if(num[i] == '2' || num[i] == '3' || num[i] == '7'){
+					strcat(result," ");
+					strcat(result,four);
+					strcat(result,"|");
+				}
+				else if(num[i] == '5' || num[i] == '6'){
+					strcat(result,"|");
+					strcat(result,four);
+					strcat(result," ");
+				}
+				else{
+					strcat(result,"|");
+					strcat(result,four);
+					strcat(result,"|");
+				}
+				
+				if(i < strlen(num)-1){
+					strcat(result," ");
+				}
+			}
+			strcat(result,"\n");
+		}
+		
+		//middle
+		for(long i=0;i<strlen(num);i++){
+			if(num[i] == '1'){
+				strcat(result,four);
+				strcat(result,"  ");
+			}
+			else if(num[i] == '7' || num[i] == '0'){
+				strcat(result,four);
+				strcat(result,"  ");
+			}
+			else{
+				strcat(result," ");
+				strcat(result,columns);
+				strcat(result," ");
+			}
+			
+			if(i < strlen(num)-1){
+				strcat(result," ");
+			}
+			
+		}
+		
+		strcat(result,"\n");
+		
+		for(int x=0;x<size;x++){
+			for(long i=0;i<strlen(num);i++){
+				if(num[i] == '1'){
+					strcat(result,four);
+					strcat(result," |");
+				}
+				else if(num[i] == '3' || num[i] == '4' || num[i] == '5' || num[i] == '7' || num[i] == '9'){
+					strcat(result," ");
+					strcat(result,four);
+					strcat(result,"|");
+				}
+				else if(num[i] == '2'){
+					strcat(result,"|");
+					strcat(result,four);
+					strcat(result," ");
+				}
+				else{
+					strcat(result,"|");
+					strcat(result,four);
+					strcat(result,"|");
+				}
+				
+				if(i < strlen(num)-1){
+					strcat(result," ");
+				}
+			}
+			strcat(result,"\n");
+		}
+		
+		//lower
+		for(long i=0;i<strlen(num);i++){
+			if(num[i] == '1'){
+				strcat(result,four);
+				strcat(result,"  ");
+			}
+			else if(num[i] == '4' || num[i] == '7'){
+				strcat(result,four);
+				strcat(result,"  ");
+			}
+			else{
+				strcat(result," ");
+				strcat(result,columns);
+				strcat(result," ");
+			}
+			
+			if(i < strlen(num)-1){
+				strcat(result," ");
+			}
+		}
+		
+		printf("%s\n\n",result);
+	}
+	
+	return 0;
+}
